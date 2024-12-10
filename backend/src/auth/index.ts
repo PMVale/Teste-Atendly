@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 const secret: string = process.env.JWT_SECRET || 'secret';
 
-const JWT_CONFIG = { algorithm: 'HS256' as Algorithm };
+const JWT_CONFIG = { algorithm: 'HS256' as Algorithm, expiredIn: '1h' };
 
 type Payload = {
   name: string,

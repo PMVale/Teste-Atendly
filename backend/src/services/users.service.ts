@@ -31,23 +31,6 @@ const createUser = async (data: Body) => {
 
 };
 
-const getUser = async (data: Body) => {;
-  const user = await User.findOne({where: {
-    email: data.email
-  }});
-  
-  if (!user) {
-    return { status: 'NOT_FOUND', data: { message: 'User does not exist' } };
-  }
-
-  const returnUser = {
-    name: user.name,
-    email: user.email
-  }
-
-  return { status: 'SUCCESSFUL', data: returnUser }
-};
-
 const loginUser = async (data: Body) => {
   const user = await User.findOne({where: {
     email: data.email
@@ -65,13 +48,12 @@ const loginUser = async (data: Body) => {
 
   const token = createToken({name: user.name, email: user.email});
 
-  return { status: 'SUCCESSFUL', data: {token}}
+  return { status: 'SUCCESSFUL', data: {name: user.name, email: user.email, token}}
 
 }
 
 const usersService = {
   createUser,
-  getUser,
   loginUser,
 }
 
