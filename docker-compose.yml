@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql:8.0.32
+    container_name: db
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 5

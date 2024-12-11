@@ -28,7 +28,7 @@ export default {
     logout() {
       localStorage.removeItem("userData");
       alert("Logged out successfully!");
-      this.$router.push("/login");
+      this.$router.push("/");
     },
   },
 };

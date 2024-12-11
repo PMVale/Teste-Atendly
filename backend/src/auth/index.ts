@@ -1,9 +1,9 @@
-import jwt, {Algorithm} from "jsonwebtoken";
+import jwt, {Algorithm, SignOptions} from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 
 const secret: string = process.env.JWT_SECRET || 'secret';
 
-const JWT_CONFIG = { algorithm: 'HS256' as Algorithm, expiredIn: '1h' };
+const JWT_CONFIG: SignOptions = { algorithm: 'HS256' as Algorithm, expiresIn: '1h' };
 
 type Payload = {
   name: string,

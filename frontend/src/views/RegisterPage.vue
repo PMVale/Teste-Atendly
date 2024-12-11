@@ -28,12 +28,14 @@ export default {
   methods: {
     async register() {
       try {
-        await api.post("/register", {
+        const response = await api.post("/register", {
           name: this.name,
           email: this.email,
           password: this.password,
         });
+        console.log(response);
       } catch (error) {
+        console.log(error);
         this.error = error.response?.data?.message || "An error occurred.";
       }
     },

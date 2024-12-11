@@ -1,9 +1,11 @@
 'use strict';
 
+import { DataTypes as DataTypesType, QueryInterface } from "sequelize";
+
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+export default {
+  up (queryInterface: QueryInterface, Sequelize: typeof DataTypesType) {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -25,7 +27,7 @@ module.exports = {
     })
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+  down (queryInterface: QueryInterface, Sequelize: typeof DataTypesType) {
+    return queryInterface.dropTable('users');
   }
 };

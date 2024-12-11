@@ -1,10 +1,15 @@
 import { Op } from "sequelize";
 import { createToken, hashPassword, validatePassword } from "../auth";
+import User from '../database/models/User'
 
-const {User} = require('../models');
 
 type Body = {
-  name?: string,
+  name: string,
+  email: string,
+  password: string,
+}
+
+type Login = {
   email: string,
   password: string,
 }
@@ -31,7 +36,7 @@ const createUser = async (data: Body) => {
 
 };
 
-const loginUser = async (data: Body) => {
+const loginUser = async (data: Login) => {
   const user = await User.findOne({where: {
     email: data.email
   }});

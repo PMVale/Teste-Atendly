@@ -5,7 +5,7 @@ import ProfilePage from "../views/ProfilePage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/register", name: "Register", component: RegisterPage },
-  { path: "/login", name: "Login", component: LoginPage },
+  { path: "/", name: "Login", component: LoginPage },
   { path: "/profile", name: "Profile", component: ProfilePage },
 ];
 
@@ -15,7 +15,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem("token");
+  const token =
+    JSON.parse(localStorage.getItem("userData") as string)?.token || null;
 
   if (to.name === "Profile" && !token) {
     alert("You have to be logged in to access the Profile page");
