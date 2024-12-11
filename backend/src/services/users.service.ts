@@ -14,6 +14,10 @@ type Login = {
   password: string,
 }
 
+type Profile = {
+  email: string
+}
+
 const createUser = async (data: Body) => {
   const user = await User.findAll({where: {
     [Op.and]: [{ email: data.email}, {password: data.password}]
@@ -57,9 +61,23 @@ const loginUser = async (data: Login) => {
 
 }
 
+const getUser = async (data: Profile) => {
+  console.log(data);
+  const user = await User.findOne({where: {
+    email: data.email
+  }});
+  
+  if (!user) {
+    return { status: 'NOT_FOUND', data: { message: 'User does not exist' } };
+  };
+
+  return { status: 'SUCCESSFUL', data: {name: user.name, email: user.email}}
+}
+
 const usersService = {
   createUser,
   loginUser,
+  getUser
 }
 
 export default usersService;

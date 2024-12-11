@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import api from "../services/api";
 import validateToken from "../utils/validateToken.ts";
 export default {
   created() {
@@ -18,10 +19,14 @@ export default {
       localStorage.removeItem("userData");
       this.$router.push("/login");
     }
+
+    this.fetchData();
   },
   data() {
     return {
-      user: JSON.parse(localStorage.getItem("userData")) || null,
+      user: {} || null,
+      loading: false,
+      error: null,
     };
   },
   methods: {
@@ -29,6 +34,21 @@ export default {
       localStorage.removeItem("userData");
       alert("Logged out successfully!");
       this.$router.push("/");
+    },
+
+    async fetchData() {
+      try {
+        const token = JSON.parse(localStorage.getItem("userData"))?.token;
+        const response = await api.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response);
+        this.user = response.data;
+      } catch (error) {
+        this.error = error.response?.data?.message || "Invalid session.";
+      }
     },
   },
 };

@@ -42,8 +42,11 @@ export default {
 
         localStorage.setItem("userData", JSON.stringify(response.data));
 
+        this.loading = false;
+
         this.$router.push("/profile");
       } catch (error) {
+        this.loading = false;
         this.error =
           error.response?.data?.message || "Invalid email or password.";
       }

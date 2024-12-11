@@ -11,4 +11,6 @@ usersRouter.post("/register", validateUser, usersController.createUser);
 
 usersRouter.post("/login", usersController.loginUser);
 
+usersRouter.get("/profile", validateAuth, usersController.getUser);
+
 export default usersRouter;
