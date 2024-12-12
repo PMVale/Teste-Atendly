@@ -132,4 +132,8 @@ button {
   font-size: medium;
   /* background-color: rgb(221, 221, 237); */
 }
+
+button:hover {
+  background-color: rgb(19, 153, 89);
+}
 </style>
