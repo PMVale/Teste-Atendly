@@ -82,7 +82,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .profile-body {
   background-color: rgba(19, 189, 124, 0.261);
   padding: 50px;
