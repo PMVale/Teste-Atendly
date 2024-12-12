@@ -1,9 +1,12 @@
 <template>
   <div class="register-body">
-    <!-- <h1>Register</h1> -->
+    <h2>Register</h2>
     <form @submit.prevent="register" class="register-form">
+      <label for="email" class="label-name"> Name* </label>
       <input v-model="name" placeholder="Name" required />
+      <label for="email" class="label-email"> Email* </label>
       <input v-model="email" type="email" placeholder="Email" required />
+      <label for="email" class="label-password"> Password* </label>
       <input
         v-model="password"
         type="password"
@@ -81,6 +84,7 @@ input {
   width: 450px;
   border: 1px solid black;
   border-radius: 5px;
+  margin-bottom: 30px;
 }
 
 .buttons {
@@ -106,8 +110,28 @@ button:hover {
 .register-form {
   display: flex;
   flex-direction: column;
+  position: relative;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 50px;
+  padding-top: 30px;
+  /* margin-top: 50px; */
+}
+
+.label-name {
+  position: absolute;
+  left: 2.5%;
+  top: 5.2%;
+}
+
+.label-email {
+  position: absolute;
+  left: 2.5%;
+  top: 27.5%;
+}
+
+.label-password {
+  position: absolute;
+  left: 2.5%;
+  top: 49.5%;
 }
 </style>

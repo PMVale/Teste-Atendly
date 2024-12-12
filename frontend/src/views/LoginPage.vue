@@ -1,8 +1,10 @@
 <template>
   <div class="login-body">
-    <!-- <h2>Login</h2> -->
+    <h2>Login</h2>
     <form @submit.prevent="login" class="login-form">
+      <label for="email" class="label-email"> Email* </label>
       <input v-model="email" type="email" placeholder="Email" required />
+      <label for="password" class="label-password"> Password* </label>
       <input
         v-model="password"
         type="password"
@@ -90,8 +92,9 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   padding: 10px;
+  padding-top: 20px;
   position: relative;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .register-link {
@@ -108,11 +111,24 @@ input {
   width: 450px;
   border: 1px solid black;
   border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.label-email {
+  position: absolute;
+  left: 4%;
+  top: 3.3%;
+}
+
+.label-password {
+  position: absolute;
+  left: 4%;
+  top: 34.5%;
 }
 
 button {
   margin: 30px 0;
-  padding: 10px 20px;
+  padding: 10px 30px;
   border: 1px solid black;
   border-radius: 5px;
   font-weight: 400;
