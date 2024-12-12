@@ -128,12 +128,12 @@ input {
 
 button {
   margin: 30px 0;
-  padding: 10px 30px;
+  padding: 10px 220px;
   border: 1px solid black;
   border-radius: 5px;
   font-weight: 400;
   font-size: medium;
-  /* background-color: rgb(221, 221, 237); */
+  background-color: white;
 }
 
 button:hover {

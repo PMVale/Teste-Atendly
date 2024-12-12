@@ -49,7 +49,8 @@ const loginUser = async (data: Login) => {
     return { status: 'NOT_FOUND', data: { message: 'User does not exist' } };
   };
 
-  const check = validatePassword(data.password, user.password);
+  const check = await validatePassword(data.password, user.password);
+  console.log(check);
 
   if (!check) {
     return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password'}}

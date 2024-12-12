@@ -124,13 +124,13 @@ input {
 
 button {
   margin-top: 50px;
-  margin-left: 35%;
-  padding: 10px 20px;
+  margin-left: 30%;
+  padding: 10px 50px;
   border: 1px solid black;
   border-radius: 5px;
   font-weight: 400;
   font-size: medium;
-  /* background-color: rgb(221, 221, 237); */
+  background-color: white;
 }
 
 button:hover {
