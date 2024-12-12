@@ -1,6 +1,6 @@
 <template>
   <div class="register-body">
-    <h1>Register</h1>
+    <!-- <h1>Register</h1> -->
     <form @submit.prevent="register" class="register-form">
       <input v-model="name" placeholder="Name" required />
       <input v-model="email" type="email" placeholder="Email" required />
@@ -10,7 +10,12 @@
         placeholder="Password"
         required
       />
-      <button type="submit">Register</button>
+      <div class="buttons">
+        <button type="button" @click="redirect">Return</button>
+        <button type="submit" :disabled="loading">
+          {{ loading ? "Registering..." : "Register" }}
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -23,10 +28,14 @@ export default {
       name: "",
       email: "",
       password: "",
+      loading: false,
+      error: null,
     };
   },
   methods: {
     async register() {
+      this.loading = true;
+      this.error = null;
       try {
         const response = await api.post("/register", {
           name: this.name,
@@ -34,10 +43,17 @@ export default {
           password: this.password,
         });
         console.log(response);
+        this.loading = false;
+        alert("Account created successfully!");
+        this.$router.push("/");
       } catch (error) {
         console.log(error);
+        this.loading = false;
         this.error = error.response?.data?.message || "An error occurred.";
       }
+    },
+    redirect() {
+      this.$router.push("/");
     },
   },
 };
@@ -67,6 +83,12 @@ input {
   border-radius: 5px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+}
+
 button {
   margin: 30px 0;
   padding: 10px 20px;
@@ -86,5 +108,6 @@ button:hover {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 50px;
 }
 </style>

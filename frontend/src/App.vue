@@ -1,9 +1,9 @@
 <template>
-  <nav>
+  <!-- <nav>
     <router-link to="/">Login</router-link> |
     <router-link to="/register">Register</router-link> |
     <router-link to="/profile">Profile</router-link>
-  </nav>
+  </nav> -->
   <router-view />
 </template>
 
@@ -17,7 +17,7 @@
 }
 
 body {
-  background-color: #ccd2d7;
+  background-color: lightgrey;
   display: flex;
   align-items: center;
   justify-content: center;
