@@ -19,8 +19,14 @@
 
 <script>
 import api from "../services/api";
+import { useStore } from "vuex";
 
 export default {
+  setup() {
+    const store = useStore();
+    return { store };
+  },
+
   data() {
     return {
       email: "",
@@ -29,6 +35,7 @@ export default {
       error: null,
     };
   },
+
   methods: {
     async login() {
       this.loading = true;
@@ -44,9 +51,12 @@ export default {
 
         this.loading = false;
 
+        this.store.commit("SET_VALID", true);
+
         this.$router.push("/profile");
       } catch (error) {
         this.loading = false;
+        this.store.commit("SET_VALID", false);
         this.error =
           error.response?.data?.message || "Invalid email or password.";
       }

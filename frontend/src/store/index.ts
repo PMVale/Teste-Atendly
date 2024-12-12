@@ -1,9 +1,15 @@
 import { createStore } from "vuex";
 
 export default createStore({
-  state: {},
+  state: {
+    validLogin: false,
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    SET_VALID(state, status) {
+      state.validLogin = status;
+    },
+  },
   actions: {},
   modules: {},
 });

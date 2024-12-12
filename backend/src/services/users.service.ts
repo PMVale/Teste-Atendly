@@ -62,7 +62,6 @@ const loginUser = async (data: Login) => {
 }
 
 const getUser = async (data: Profile) => {
-  console.log(data);
   const user = await User.findOne({where: {
     email: data.email
   }});

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import RegisterPage from "../views/RegisterPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import ProfilePage from "../views/ProfilePage.vue";
+import store from "../store";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/register", name: "Register", component: RegisterPage },
@@ -19,6 +20,9 @@ router.beforeEach((to, from, next) => {
     JSON.parse(localStorage.getItem("userData") as string)?.token || null;
 
   if (to.name === "Profile" && !token) {
+    alert("You have to be logged in to access the Profile page");
+    next({ name: "Login" });
+  } else if (!store.state.validLogin) {
     alert("You have to be logged in to access the Profile page");
     next({ name: "Login" });
   } else {

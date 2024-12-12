@@ -10,12 +10,19 @@
 <script>
 import api from "../services/api";
 import validateToken from "../utils/validateToken.ts";
+import { useStore } from "vuex";
+
 export default {
+  setup() {
+    const store = useStore();
+    return { store };
+  },
   created() {
     const token = JSON.parse(localStorage.getItem("userData"))?.token;
 
     if (!validateToken(token)) {
       alert("Expired session. Please log in again");
+      this.store.commit("SET_VALUE", false);
       localStorage.removeItem("userData");
       this.$router.push("/login");
     }
@@ -33,6 +40,7 @@ export default {
     logout() {
       localStorage.removeItem("userData");
       alert("Logged out successfully!");
+      this.store.commit("SET_VALID", false);
       this.$router.push("/");
     },
 
