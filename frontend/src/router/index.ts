@@ -22,7 +22,7 @@ router.beforeEach((to, from, next) => {
   if (to.name === "Profile" && !token) {
     alert("You have to be logged in to access the Profile page");
     next({ name: "Login" });
-  } else if (!store.state.validLogin) {
+  } else if (!store.state.validLogin && to.name === "Profile") {
     alert("You have to be logged in to access the Profile page");
     next({ name: "Login" });
   } else {
