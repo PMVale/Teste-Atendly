@@ -50,7 +50,6 @@ const loginUser = async (data: Login) => {
   };
 
   const check = await validatePassword(data.password, user.password);
-  console.log(check);
 
   if (!check) {
     return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password'}}

@@ -2,20 +2,25 @@
   <div class="login-body">
     <h2>Login</h2>
     <form @submit.prevent="login" class="login-form">
-      <label for="email" class="label-email"> Email* </label>
+      <label for="email" class="label-email">
+        Email<strong style="color: red">*</strong>
+      </label>
       <input v-model="email" type="email" placeholder="Email" required />
-      <label for="password" class="label-password"> Password* </label>
+      <label for="password" class="label-password">
+        Password<strong style="color: red">*</strong>
+      </label>
       <input
         v-model="password"
         type="password"
         placeholder="Password"
         required
       />
-      <router-link to="/register" class="register-link"
+      <!-- <router-link to="/register" class="register-link"
         >Create an account</router-link
-      >
-      <button type="submit" :disabled="loading">
-        {{ loading ? "Logging in..." : "Login" }}
+      > -->
+      <button type="submit" :disabled="loading" class="btn-login">Login</button>
+      <button type="button" @click="register" class="btn-signup">
+        Sign Up
       </button>
     </form>
     <p v-if="error" style="color: red">{{ error }}</p>
@@ -66,6 +71,9 @@ export default {
           error.response?.data?.message || "Invalid email or password.";
       }
     },
+    register() {
+      this.$router.push("/register");
+    },
   },
 };
 </script>
@@ -74,6 +82,7 @@ export default {
 .login-body {
   background-color: rgba(19, 189, 124, 0.261);
   padding: 30px;
+  padding-bottom: 96px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,13 +136,18 @@ input {
 }
 
 button {
-  margin: 30px 0;
+  /* margin-top: 50px; */
   padding: 10px 220px;
   border: 1px solid black;
   border-radius: 5px;
   font-weight: 400;
   font-size: medium;
   background-color: white;
+}
+
+.btn-signup {
+  margin-top: 20px;
+  padding: 10px 211px;
 }
 
 button:hover {

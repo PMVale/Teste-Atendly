@@ -2,11 +2,17 @@
   <div class="register-body">
     <h2>Register</h2>
     <form @submit.prevent="register" class="register-form">
-      <label for="email" class="label-name"> Name* </label>
+      <label for="email" class="label-name">
+        Name<strong style="color: red">*</strong>
+      </label>
       <input v-model="name" placeholder="Name" required />
-      <label for="email" class="label-email"> Email* </label>
+      <label for="email" class="label-email">
+        Email<strong style="color: red">*</strong>
+      </label>
       <input v-model="email" type="email" placeholder="Email" required />
-      <label for="email" class="label-password"> Password* </label>
+      <label for="email" class="label-password">
+        Password<strong style="color: red">*</strong>
+      </label>
       <input
         v-model="password"
         type="password"
@@ -15,9 +21,7 @@
       />
       <div class="buttons">
         <button type="button" @click="redirect">Return</button>
-        <button type="submit" :disabled="loading">
-          {{ loading ? "Registering..." : "Register" }}
-        </button>
+        <button type="submit" :disabled="loading">Register</button>
       </div>
     </form>
   </div>
@@ -65,7 +69,7 @@ export default {
 <style scoped>
 .register-body {
   background-color: rgba(19, 189, 124, 0.261);
-  padding: 10px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,12 +93,14 @@ input {
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
   width: 96%;
 }
 
 button {
-  margin: 30px 0;
+  /* margin-top: 10px; */
+  margin-bottom: 20px;
   padding: 10px 50px;
   border: 1px solid black;
   border-radius: 5px;
@@ -120,18 +126,18 @@ button:hover {
 .label-name {
   position: absolute;
   left: 2.5%;
-  top: 5.2%;
+  top: 4.4%;
 }
 
 .label-email {
   position: absolute;
   left: 2.5%;
-  top: 27.5%;
+  top: 24.5%;
 }
 
 .label-password {
   position: absolute;
   left: 2.5%;
-  top: 49.5%;
+  top: 44.5%;
 }
 </style>

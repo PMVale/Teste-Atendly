@@ -85,7 +85,8 @@ export default {
 <style scoped>
 .profile-body {
   background-color: rgba(19, 189, 124, 0.261);
-  padding: 50px;
+  padding: 45.5px;
+  padding-bottom: 118px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -100,6 +101,7 @@ export default {
 
 .profile-data {
   display: flex;
+  margin-top: 50px;
 }
 
 .profile-details {
@@ -123,9 +125,9 @@ input {
 }
 
 button {
-  margin-top: 50px;
-  margin-left: 30%;
-  padding: 10px 50px;
+  margin-top: 100px;
+  /* margin-left: 30%; */
+  padding: 10px 220px;
   border: 1px solid black;
   border-radius: 5px;
   font-weight: 400;
